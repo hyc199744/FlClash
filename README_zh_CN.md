@@ -80,14 +80,14 @@ clash://install-config?url=<经过 URL 编码的订阅链接>
 
 ```text
 com.qiyuan.clash.action.START
-com.follow.clash.action.STOP
-com.follow.clash.action.TOGGLE
+com.qiyuan.clash.action.STOP
+com.qiyuan.clash.action.TOGGLE
 ```
 
 在电脑上也可以通过 adb 触发：
 
 ```bash
-adb shell am start -a com.follow.clash.action.TOGGLE
+adb shell am start -a com.qiyuan.clash.action.TOGGLE
 ```
 
 ## 从源码构建

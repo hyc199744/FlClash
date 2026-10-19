@@ -86,14 +86,14 @@ activity with one of these actions:
 
 ```text
 com.qiyuan.clash.action.START
-com.follow.clash.action.STOP
-com.follow.clash.action.TOGGLE
+com.qiyuan.clash.action.STOP
+com.qiyuan.clash.action.TOGGLE
 ```
 
 From a computer, the same works over adb:
 
 ```bash
-adb shell am start -a com.follow.clash.action.TOGGLE
+adb shell am start -a com.qiyuan.clash.action.TOGGLE
 ```
 
 ## Build from source

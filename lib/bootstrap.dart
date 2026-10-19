@@ -192,16 +192,16 @@ class Bootstrap {
 
   /// 换皮版预置订阅：仅首次启动（无 profile）时导入一次。
   Future<void> _applyPresetProfile() async {
-    if (_container.read(profilesProvider).isNotEmpty ||
-        kPresetSubscriptionUrl.isEmpty) {
-      return;
-    }
     try {
+      if (_container.read(profilesProvider).isNotEmpty ||
+          kPresetSubscriptionUrl.isEmpty) {
+        return;
+      }
       await _container
           .read(profilesActionProvider.notifier)
           .addProfileFromLink(kPresetSubscriptionUrl);
     } catch (_) {
-      // 预置订阅导入失败不阻塞启动（测试环境无网络时直接跳过）。
+      // 预置订阅导入失败不阻塞启动（测试环境无网络或 provider 未初始化时直接跳过）。
     }
   }
 

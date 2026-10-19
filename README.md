@@ -136,3 +136,4 @@ Starring the repository is the easiest way to support the project. Questions and
 ## License
 
 FlClash is released under the [GPL-3.0 license](LICENSE).
+ 

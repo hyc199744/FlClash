@@ -85,7 +85,7 @@ clash://install-config?url=<URL-encoded subscription link>
 activity with one of these actions:
 
 ```text
-com.follow.clash.action.START
+com.qiyuan.clash.action.START
 com.follow.clash.action.STOP
 com.follow.clash.action.TOGGLE
 ```

@@ -178,6 +178,7 @@ class Bootstrap {
     if (!await _handlerDisclaimer()) {
       return;
     }
+    await _applyPresetProfile();
     await _showCrashRecoveryTip();
     await _container.read(coreActionProvider.notifier).startCore();
     if (!_bootDecision.isDegraded) {
@@ -187,6 +188,17 @@ class Bootstrap {
     unawaited(_container.read(resourcesActionProvider.notifier).autoUpdate());
     await bootGuard.markRunning();
     unawaited(_container.read(locationPermissionsProvider.notifier).refresh());
+  }
+
+  /// 换皮版预置订阅：仅首次启动（无 profile）时导入一次。
+  Future<void> _applyPresetProfile() async {
+    if (_container.read(profilesProvider).isNotEmpty ||
+        kPresetSubscriptionUrl.isEmpty) {
+      return;
+    }
+    await _container
+        .read(profilesActionProvider.notifier)
+        .addProfileFromLink(kPresetSubscriptionUrl);
   }
 
   Future<void> _showCrashRecoveryTip() async {

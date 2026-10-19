@@ -196,9 +196,13 @@ class Bootstrap {
         kPresetSubscriptionUrl.isEmpty) {
       return;
     }
-    await _container
-        .read(profilesActionProvider.notifier)
-        .addProfileFromLink(kPresetSubscriptionUrl);
+    try {
+      await _container
+          .read(profilesActionProvider.notifier)
+          .addProfileFromLink(kPresetSubscriptionUrl);
+    } catch (_) {
+      // 预置订阅导入失败不阻塞启动（测试环境无网络时直接跳过）。
+    }
   }
 
   Future<void> _showCrashRecoveryTip() async {
